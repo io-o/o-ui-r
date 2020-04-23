@@ -1,0 +1,21 @@
+import React from 'react';
+
+import '@/styles/index.less'
+
+import OButton, { ButtonSize, ButtonType } from '@/components/o-button'
+
+export default () => {
+  return (
+    <div>
+      <OButton 
+        type={ButtonType.Primary}
+        size={ButtonSize.Large}
+        >
+          哈哈哈</OButton>
+      <OButton 
+        disabled
+        >
+          disabled</OButton>
+    </div>
+  );
+}
