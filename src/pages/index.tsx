@@ -7,8 +7,8 @@ import OButton, { ButtonSize, ButtonType } from '@/components/o-button'
 export default () => {
   return (
     <div>
-      <OButton 
-        type={ButtonType.Primary}
+      <OButton
+        btnType={ButtonType.Primary}
         size={ButtonSize.Large}
         onClick={() => alert(1)}
         >

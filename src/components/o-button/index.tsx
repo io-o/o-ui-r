@@ -2,6 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
  
 import './index.less'
+
 // 常量可以用枚举
 export enum ButtonSize {
   Large = 'lg',
@@ -18,36 +19,43 @@ interface ButtonProps {
   className?: string;
   disabled?: boolean;
   size?: ButtonSize;
-  type?: ButtonType;
+  btnType?: ButtonType;
   children: React.ReactNode,
   href?:string
 }
 
+// 定义button原生DOM其他属性
+type NaviveButtonProps = ButtonProps & React.ButtonHTMLAttributes<HTMLElement>
 
+type AnchorButtonProps = ButtonProps & React.AnchorHTMLAttributes<HTMLElement>
 
+export type ButtonAllProps = Partial<NaviveButtonProps & AnchorButtonProps>
 
-const  OButton:React.FC<ButtonProps> = (props) => {
+const  OButton:React.FC<ButtonAllProps> = (props) => {
 
   const {
     disabled,
     size,
-    type,
+    btnType,
     children,
-    href
+    href,
+    className,
+    ...restProps
   } = props
 
     // 定义class
-  const classes = classNames('button', {
-    [`button-${type}`]: type,
+  const classes = classNames('button', className, {
+    [`button-${btnType}`]: btnType,
     [`button-${size}`]: size,
-    'disabled': type === type?.link && disabled
+    'disabled': btnType === btnType?.link && disabled
   })
 
-  if (type === type?.link && href) {
+  if (btnType === btnType?.link && href) {
     return (
       <a 
         className={classes}
         href={href}
+        {...restProps}
       >
         {children}
       </a>
@@ -57,6 +65,7 @@ const  OButton:React.FC<ButtonProps> = (props) => {
       <button
         className={classes}
         disabled={disabled}
+        {...restProps}
         >
         {children}
       </button>
