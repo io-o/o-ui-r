@@ -1,5 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
+ 
+import './index.less'
 // 常量可以用枚举
 export enum ButtonSize {
   Large = 'lg',

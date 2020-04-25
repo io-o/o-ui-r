@@ -10,6 +10,7 @@ export default () => {
       <OButton 
         type={ButtonType.Primary}
         size={ButtonSize.Large}
+        onClick={() => alert(1)}
         >
           哈哈哈</OButton>
       <OButton 
