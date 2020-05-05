@@ -63,31 +63,28 @@ let dog = new Animal('旺财');
   自增长
  */
 
- enum Direction {
-   first,
-   two,
-   three
- }
-
- console.log(Direction.first); // 0
- console.log(Direction[1]); // two
- 
-
-/* 
-  *泛型
-*/
-
-function echo<T>(arg: T): T {
-  return arg
-} 
-
-const res1 = echo(123)
-
-
-function swap<T, U>(tuple: [T, U]): [U, T] {
-  return [tuple[1], tuple[0]]
+enum Direction {
+  first,
+  two,
+  three,
 }
 
-const res2 = swap([111, '2222'])
-console.log(res2[0]);
+console.log(Direction.first); // 0
+console.log(Direction[1]); // two
 
+/*
+ *泛型
+ */
+
+function echo<T>(arg: T): T {
+  return arg;
+}
+
+const res1 = echo(123);
+
+function swap<T, U>(tuple: [T, U]): [U, T] {
+  return [tuple[1], tuple[0]];
+}
+
+const res2 = swap([111, '2222']);
+console.log(res2[0]);
