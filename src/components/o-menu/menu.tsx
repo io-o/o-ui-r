@@ -1,6 +1,8 @@
 import React, { useState, createContext } from 'react';
 import classNames from 'classnames';
 
+import './index.less';
+
 type MenuMode = 'horizonatal' | 'vertical';
 type SelectCallback = (selectIndex: number) => void;
 export interface MenuProps {

@@ -1,0 +1,20 @@
+.o-menu {
+  width: 180px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  .o-menu-item {
+    cursor: pointer;
+    padding: 10px;
+    min-width: 180px;
+    text-align: center;
+    &:hover, &:focus {
+      color: #813c85;
+      text-decoration: none;
+    }
+    &.is-active, &:hover {
+      border-bottom: 1px solid #813c85;
+    }
+  }
+}
