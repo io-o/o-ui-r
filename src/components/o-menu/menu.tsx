@@ -1,6 +1,8 @@
 import React, { useState, createContext } from 'react';
 import classNames from 'classnames';
 
+import { MenuItemProps } from './menuItem';
+
 import './index.less';
 
 type MenuMode = 'horizonatal' | 'vertical';
@@ -37,6 +39,21 @@ const OMenu: React.FC<MenuProps> = props => {
   const passedContext: OMenuContext = {
     index: currentActive ? currentActive : 0,
     onSelect: handleClick,
+  };
+
+  const renderChildren = () => {
+    return React.Children.map(chilren, child => {
+      const childElement = child as React.FunctionComponentElement<
+        MenuItemProps
+      >;
+      const { displayName } = childElement.type;
+
+      if (displayName === 'MenuItem') {
+        return child;
+      } else {
+        console.log('warning');
+      }
+    });
   };
 
   return (

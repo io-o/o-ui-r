@@ -35,4 +35,6 @@ const OMenuItem: React.FC<MenuItemProps> = props => {
 
 OMenuItem.defaultProps = {};
 
+OMenuItem.displayName = 'MenuItem';
+
 export default OMenuItem;
