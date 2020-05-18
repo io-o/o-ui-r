@@ -23,9 +23,9 @@ export default () => {
       <OButton disabled>disabled</OButton>
 
       <OMenu defaultIndex={0} onSelect={handleSelect}>
-        <OMenuItem index={0}>sm</OMenuItem>
-        <OMenuItem index={1}>sm</OMenuItem>
-        <OMenuItem index={2}>sm</OMenuItem>
+        <OMenuItem>sm</OMenuItem>
+        <OMenuItem>sm</OMenuItem>
+        <OMenuItem>sm</OMenuItem>
       </OMenu>
     </div>
   );

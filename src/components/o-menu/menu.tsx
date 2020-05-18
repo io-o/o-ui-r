@@ -42,14 +42,16 @@ const OMenu: React.FC<MenuProps> = props => {
   };
 
   const renderChildren = () => {
-    return React.Children.map(chilren, child => {
+    return React.Children.map(children, (child, index) => {
       const childElement = child as React.FunctionComponentElement<
         MenuItemProps
       >;
       const { displayName } = childElement.type;
 
       if (displayName === 'MenuItem') {
-        return child;
+        return React.cloneElement(childElement, {
+          index,
+        });
       } else {
         console.log('warning');
       }
@@ -59,7 +61,7 @@ const OMenu: React.FC<MenuProps> = props => {
   return (
     <ul className={classes} style={style}>
       <MenuContext.Provider value={passedContext}>
-        {children}
+        {renderChildren()}
       </MenuContext.Provider>
     </ul>
   );
