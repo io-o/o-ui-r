@@ -28,6 +28,7 @@ const OMenu: React.FC<MenuProps> = props => {
 
   const classes = classNames('o-menu', className, {
     'menu-vertical': mode === 'vertical',
+    'menu-horizontal': mode !== 'vertical',
   });
 
   const handleClick = (index: number) => {
@@ -48,7 +49,7 @@ const OMenu: React.FC<MenuProps> = props => {
       >;
       const { displayName } = childElement.type;
 
-      if (displayName === 'MenuItem') {
+      if (displayName === 'MenuItem' || displayName === 'SubMenu') {
         return React.cloneElement(childElement, {
           index,
         });

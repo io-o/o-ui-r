@@ -5,6 +5,7 @@ import '@/styles/index.less';
 import OButton, { ButtonSize, ButtonType } from '@/components/o-button';
 import OMenu from '@/components/o-menu/menu';
 import OMenuItem from '@/components/o-menu/menuItem';
+import SubMenu from '@/components/o-menu/subMenu';
 
 export default () => {
   const handleSelect = (index: number) => {
@@ -23,9 +24,14 @@ export default () => {
       <OButton disabled>disabled</OButton>
 
       <OMenu defaultIndex={0} onSelect={handleSelect}>
-        <OMenuItem>sm</OMenuItem>
-        <OMenuItem>sm</OMenuItem>
-        <OMenuItem>sm</OMenuItem>
+        <OMenuItem>aa</OMenuItem>
+        <OMenuItem>bb</OMenuItem>
+        <OMenuItem>cc</OMenuItem>
+        <SubMenu title="sub">
+          <OMenuItem>ee2</OMenuItem>
+          <OMenuItem>ee1</OMenuItem>
+        </SubMenu>
+        <OMenuItem>dd</OMenuItem>
       </OMenu>
     </div>
   );
