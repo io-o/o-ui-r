@@ -23,7 +23,11 @@ export default () => {
       </OButton>
       <OButton disabled>disabled</OButton>
 
-      <OMenu defaultIndex={0} onSelect={handleSelect}>
+      <OMenu
+        defaultIndex="0"
+        defaultOpenSubMenus={['3']}
+        onSelect={handleSelect}
+      >
         <OMenuItem>aa</OMenuItem>
         <OMenuItem>bb</OMenuItem>
         <OMenuItem>cc</OMenuItem>

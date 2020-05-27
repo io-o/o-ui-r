@@ -6,24 +6,34 @@ import { MenuItemProps } from './menuItem';
 import './index.less';
 
 type MenuMode = 'horizonatal' | 'vertical';
-type SelectCallback = (selectIndex: number) => void;
+type SelectCallback = (selectIndex: string) => void;
 export interface MenuProps {
-  defaultIndex?: number;
+  defaultIndex?: string;
   className?: string;
   mode?: MenuMode;
   style?: React.CSSProperties;
   onSelect?: SelectCallback;
+  defaultOpenSubMenus?: string[];
 }
 
 interface OMenuContext {
-  index: number;
+  index: string;
   onSelect?: SelectCallback;
+  defaultOpenSubMenus?: string[];
 }
 
-export const MenuContext = createContext<OMenuContext>({ index: 0 });
+export const MenuContext = createContext<OMenuContext>({ index: '0' });
 
 const OMenu: React.FC<MenuProps> = props => {
-  const { className, mode, style, children, defaultIndex, onSelect } = props;
+  const {
+    className,
+    mode,
+    style,
+    children,
+    defaultIndex,
+    onSelect,
+    defaultOpenSubMenus,
+  } = props;
   const [currentActive, setActive] = useState(defaultIndex);
 
   const classes = classNames('o-menu', className, {
@@ -31,15 +41,16 @@ const OMenu: React.FC<MenuProps> = props => {
     'menu-horizontal': mode !== 'vertical',
   });
 
-  const handleClick = (index: number) => {
+  const handleClick = (index: string) => {
     setActive(index);
     if (onSelect) {
       onSelect(index);
     }
   };
   const passedContext: OMenuContext = {
-    index: currentActive ? currentActive : 0,
+    index: currentActive ? currentActive : '0',
     onSelect: handleClick,
+    defaultOpenSubMenus,
   };
 
   const renderChildren = () => {
@@ -51,7 +62,7 @@ const OMenu: React.FC<MenuProps> = props => {
 
       if (displayName === 'MenuItem' || displayName === 'SubMenu') {
         return React.cloneElement(childElement, {
-          index,
+          index: index.toString(),
         });
       } else {
         console.log('warning');
@@ -69,8 +80,9 @@ const OMenu: React.FC<MenuProps> = props => {
 };
 
 OMenu.defaultProps = {
-  defaultIndex: 0,
+  defaultIndex: '0',
   mode: 'horizonatal',
+  defaultOpenSubMenus: [],
 };
 
 export default OMenu;

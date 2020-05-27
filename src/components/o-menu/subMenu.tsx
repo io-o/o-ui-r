@@ -4,7 +4,7 @@ import { MenuContext } from './menu';
 import { MenuItemProps } from './menuItem';
 
 export interface SubMenuProps {
-  index?: number;
+  index?: string;
   title: string;
   className?: string;
 }
@@ -16,29 +16,44 @@ const SubMenu: React.FC<SubMenuProps> = ({
   className,
 }) => {
   const context = useContext(MenuContext);
+  const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
+  const isOpend = index ? openedSubMenus.includes(index) : false;
+
   const classes = classNames('menu-item submenu-item', className, {
     'is-active': context.index === index,
   });
 
+  const [open, setOpen] = useState(isOpend);
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setOpen(!open);
+  };
+
   const renderChildren = () => {
+    const subMenuClasses = classNames('subMenu', {
+      'subMenu-open': open,
+    });
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childElement = child as FunctionComponentElement<MenuItemProps>;
 
       if (childElement.type.displayName === 'MenuItem') {
         return React.cloneElement(childElement, {
-          index,
+          index: `${index}-${i}`,
         });
       } else {
         console.error('warning');
       }
     });
 
-    return <ul>{childrenComponent}</ul>;
+    return <ul className={subMenuClasses}>{childrenComponent}</ul>;
   };
 
   return (
     <li key={index} className={classes}>
-      <div className="submenu-title">{title}</div>
+      <div className="submenu-title" onClick={handleClick}>
+        {title}
+      </div>
       {renderChildren()}
     </li>
   );

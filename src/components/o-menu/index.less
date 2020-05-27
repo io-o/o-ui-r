@@ -9,12 +9,20 @@
     padding: 10px;
     min-width: 180px;
     text-align: center;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: #813c85;
       text-decoration: none;
     }
-    &.is-active, &:hover {
+    &.is-active,
+    &:hover {
       border-bottom: 1px solid #813c85;
+    }
+  }
+  .subMenu {
+    display: none;
+    &-open {
+      display: block;
     }
   }
 }
