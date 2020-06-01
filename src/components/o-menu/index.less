@@ -25,4 +25,17 @@
       display: block;
     }
   }
+  .submenu-title {
+    display: flex;
+    align-items: center;
+    .menu-icon {
+      margin-left: 3px;
+      transition: transform 0.25s ease-in-out;
+    }
+    &:hover {
+      .menu-icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
 }

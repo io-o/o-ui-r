@@ -53,6 +53,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
     <li key={index} className={classes}>
       <div className="submenu-title" onClick={handleClick}>
         {title}
+        <span className="menu-icon">↓</span>
       </div>
       {renderChildren()}
     </li>
