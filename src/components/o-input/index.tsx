@@ -1,4 +1,4 @@
-import React, { ReactElement, InputHTMLAttributes } from 'react';
+import React, { ReactElement, InputHTMLAttributes, ChangeEvent } from 'react';
 import classNames from 'classnames';
 
 import './index.less';
@@ -12,18 +12,19 @@ export interface OInputProps
   size?: InputSize;
   icon?: string;
   prepand?: string | ReactElement;
-  onChange?: () => {};
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const OInput: React.FC<OInputProps> = props => {
   // 取出属性
-  const { disabled, size, icon, prepand } = props;
+  const { disabled, size, icon, prepand, ...restProps } = props;
 
   //根据属性计算className
 
   return (
     <>
       <input />
+      {prepand && <div>{prepand}</div>}
     </>
   );
 };

@@ -6,6 +6,7 @@ import OButton, { ButtonSize, ButtonType } from '@/components/o-button';
 import OMenu from '@/components/o-menu/menu';
 import OMenuItem from '@/components/o-menu/menuItem';
 import SubMenu from '@/components/o-menu/subMenu';
+import OInput from '@/components/o-input';
 
 export default () => {
   const handleSelect = (index: number) => {
@@ -37,6 +38,7 @@ export default () => {
         </SubMenu>
         <OMenuItem>dd</OMenuItem>
       </OMenu>
+      <OInput prepand=".com"></OInput>
     </div>
   );
 };
