@@ -21,6 +21,10 @@ const OInput: React.FC<OInputProps> = props => {
 
   //根据属性计算className
 
+  if ('value' in props) {
+    delete restProps.defaultValue;
+  }
+
   return (
     <>
       <input />
