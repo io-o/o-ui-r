@@ -27,7 +27,7 @@ const OInput: React.FC<OInputProps> = props => {
 
   return (
     <>
-      <input />
+      <input disabled={disabled} {...restProps} />
       {prepand && <div>{prepand}</div>}
     </>
   );

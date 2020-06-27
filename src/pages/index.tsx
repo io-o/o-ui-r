@@ -7,10 +7,18 @@ import OMenu from '@/components/o-menu/menu';
 import OMenuItem from '@/components/o-menu/menuItem';
 import SubMenu from '@/components/o-menu/subMenu';
 import OInput from '@/components/o-input';
+import AutoComplete from '@/components/o-input/autoComplete';
+
+const testSuggestions = ['aaa', 'vas', 'sdd', 'eedds', 'rfsd'];
 
 export default () => {
   const handleSelect = (index: number) => {
     console.log(111, index);
+  };
+
+  // 测试 AutoComplete
+  const getSuggestions = (query: string) => {
+    return testSuggestions.filter(name => name.includes(query));
   };
 
   return (
@@ -39,6 +47,7 @@ export default () => {
         <OMenuItem>dd</OMenuItem>
       </OMenu>
       <OInput prepand=".com"></OInput>
+      <AutoComplete fetchSuggestions={getSuggestions}></AutoComplete>
     </div>
   );
 };
