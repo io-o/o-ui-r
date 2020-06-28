@@ -24,15 +24,32 @@ function AutoComplete(props: AutoCompleteProps) {
     }
   };
 
-  console.log(suggestions);
+  const handleClick = (item: string) => {
+    setInputValue(item);
+    setSuggestions([]);
+    if (onSelect) {
+      onSelect(item);
+    }
+  };
+
+  const generateDropdown = () => {
+    return (
+      <ul>
+        {suggestions.map(item => {
+          return (
+            <li key={item} onClick={() => handleClick(item)}>
+              {item}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
 
   return (
     <div>
-      <OInput
-        defaultValue={inputValue}
-        onChange={handleChange}
-        {...restProps}
-      ></OInput>
+      <OInput value={inputValue} onChange={handleChange} {...restProps} />
+      {suggestions.length > 0 && generateDropdown()}
     </div>
   );
 }
