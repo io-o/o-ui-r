@@ -21,6 +21,10 @@ export default () => {
     return testSuggestions.filter(name => name.includes(query));
   };
 
+  const renderOption = (item: string) => {
+    return <h2>{item}</h2>;
+  };
+
   return (
     <div>
       <OButton
@@ -47,7 +51,10 @@ export default () => {
         <OMenuItem>dd</OMenuItem>
       </OMenu>
       <OInput prepand=".com"></OInput>
-      <AutoComplete fetchSuggestions={getSuggestions}></AutoComplete>
+      <AutoComplete
+        renderOption={renderOption}
+        fetchSuggestions={getSuggestions}
+      ></AutoComplete>
     </div>
   );
 };
