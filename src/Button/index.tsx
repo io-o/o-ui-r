@@ -7,11 +7,13 @@ interface ButtonProps {
   type?: 'default' | 'primary';
   disabled?: boolean;
   className?: string;
+  size?: 'lg' | 'sm';
 }
 
-const Button:React.FC<ButtonProps> = ({children, type='default', disabled, className, ...restProps}) => {
+const Button:React.FC<ButtonProps> = ({children, type='default',size="sm", disabled, className, ...restProps}) => {
   const classes = classNames('o-button', className, {
     [`o-button-${type}`]: type,
+    [`o-button-${size}`]: size,
     disabled
   })
 

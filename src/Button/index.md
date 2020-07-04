@@ -11,6 +11,7 @@ export default () => (
   <>
     <Button onClick={() => alert(1)}>default</Button>
     <Button type="primary">primary</Button>
+    <Button size="lg">lg</Button>
   </>
 );
 ```

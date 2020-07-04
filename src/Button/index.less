@@ -3,8 +3,23 @@
   font-size: 12px;
   min-width: 64px;
   margin: 0 10px;
+  outline: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  &:hover {
+    color: #1976d2;
+    border: 1px solid #1976d2;
+  }
   &-primary {
     color: #fff;
     background-color: #1976d2;
+  }
+  &-primary:hover {
+    color: #fff;
+    opacity: .6;
+  }
+  &-lg {
+    padding: 12px 32px;
+    font-size: 14px;
   }
 }
